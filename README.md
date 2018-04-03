@@ -1,2 +1,3 @@
 # EE2024
-EE2024 Project
+EE2024 Project - NUSSpace
+
