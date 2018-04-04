@@ -448,26 +448,6 @@ int main(void) {
 	uint8_t line[64];
 
 	init_uart();
-	//test sending message
-	msg = "Welcome to EE2024 \r\n";
-	UART_Send(LPC_UART3, (uint8_t *)msg , strlen(msg), BLOCKING);
-	//test receiving a letter and sending back to port
-	UART_Receive(LPC_UART3, &data, 1, NONE_BLOCKING);
-	UART_Send(LPC_UART3, &data, 1, NONE_BLOCKING);
-	//test receiving message without knowing message length
-	len = 0;
-	do
-	{   UART_Receive(LPC_UART3, &data, 1, NONE_BLOCKING);
-
-	if (data != '\r')
-	{
-		len++;
-		line[len-1] = data;
-	}
-	} while ((len<63) && (data != '\r'));
-	line[len]=0;
-	UART_SendString(LPC_UART3, &line);
-	printf("--%s--\n", line);
 
 	while (1) {
 		if (currentMode== Stationary) {
